@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import RecipeDetail from './pages/RecipeDetail';
+import AddRecipe from './pages/AddRecipe';
+import Favorites from './pages/Favorites';
+import About from "./pages/About";
 
 function App() {
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+
+  const toggleFavorite = (recipe) => {
+    setFavoriteRecipes((prevFavorites) => {
+      const isFavorite = prevFavorites.find((fav) => fav.id === recipe.id);
+      if (isFavorite) {
+        // Remove dos favoritos
+        return prevFavorites.filter((fav) => fav.id !== recipe.id);
+      } else {
+        // Adiciona aos favoritos
+        return [...prevFavorites, recipe];
+      }
+    });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<Home toggleFavorite={toggleFavorite} favoriteRecipes={favoriteRecipes} />} />
+          <Route path="/recipe/:id" element={<RecipeDetail toggleFavorite={toggleFavorite} favoriteRecipes={favoriteRecipes} />} />
+          <Route path="/add-recipe" element={<AddRecipe />} />
+          <Route path="/favorites" element={<Favorites favoriteRecipes={favoriteRecipes} />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

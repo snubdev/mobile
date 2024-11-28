@@ -1,38 +1,149 @@
-.App {
+/* Estilos globais */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fef9f3;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #e85d04;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+ul {
+  list-style-type: none;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+li {
+  background-color: #f48c06;
+  padding: 15px;
+  margin: 15px auto;
+  border-radius: 10px;
+  transition: transform 0.2s;
+  max-width: 90%;  /* Para manter o layout mais contido */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+li:hover {
+  transform: scale(1.03);
+}
+
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+a {
+  text-decoration: none;
   color: white;
+  font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+a:hover {
+  color: #e9c46a;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+button {
+  background-color: #e63946;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+button:hover {
+  background-color: #f77f00;
+}
+
+.tips {
+  list-style-type: square;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.recipe-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.recipe-list li {
+  flex: 1 1 calc(33% - 16px);
+  max-width: calc(33% - 16px);
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.recipe-list img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.recipe-list h3 {
+  font-size: 1.2em;
+  color: #333;
+}
+
+/* Barra de navegação com botões */
+.navbar {
+  display: flex;
+  justify-content: center;  /* Centraliza os botões */
+  background-color: #ff7f50;
+  padding: 10px 0;
+  border-radius: 8px;
+}
+
+.navbar-button {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin: 0 1px;  /* Espaçamento de 1px entre os botões */
+  transition: background-color 0.3s ease;
+}
+
+.navbar-button:hover {
+  background-color: #e63946;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 768px) {
+  body {
+    padding: 0 10px;
   }
-  to {
-    transform: rotate(360deg);
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  li {
+    margin: 10px auto;
+    padding: 10px;
+  }
+
+  img {
+    width: 100px;  /* Reduzindo o tamanho das imagens no mobile */
+    height: 100px;
+  }
+
+  button {
+    width: 100%;  /* Botões ocupam a largura total no mobile */
+    padding: 10px;
+  }
+
+  form input {
+    width: 100%;  /* Campos de formulário ocupam toda a largura */
+    padding: 8px;
+    margin-bottom: 10px;
   }
 }
